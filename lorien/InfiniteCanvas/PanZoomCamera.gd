@@ -1,4 +1,8 @@
+class_name PanZoomCamera
 extends Camera2D
+
+# -------------------------------------------------------------------------------------------------
+static var camera_instance : PanZoomCamera
 
 # -------------------------------------------------------------------------------------------------
 signal zooming_toggled(value: bool)
@@ -18,6 +22,10 @@ var _pan_active := false
 var _zoom_active := false
 var _current_zoom_level := 1.0
 var _start_mouse_pos := Vector2(0.0, 0.0)
+
+# -------------------------------------------------------------------------------------------------
+func _ready() -> void:
+	camera_instance = self
 
 # -------------------------------------------------------------------------------------------------
 func set_zoom_level(zoom_level: float) -> void:

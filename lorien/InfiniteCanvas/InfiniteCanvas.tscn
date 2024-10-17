@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4u5gk5n2aiom"]
+[gd_scene load_steps=18 format=3 uid="uid://c4u5gk5n2aiom"]
 
 [ext_resource type="Script" path="res://InfiniteCanvas/InfiniteCanvas.gd" id="1"]
 [ext_resource type="Script" path="res://InfiniteCanvas/PanZoomCamera.gd" id="2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://InfiniteCanvas/Tools/SelectionTool.gd" id="7"]
 [ext_resource type="PackedScene" path="res://InfiniteCanvas/Cursor/SelectionCursor/SelectionCursor.tscn" id="8"]
 [ext_resource type="Script" path="res://InfiniteCanvas/Tools/SelectionRectangle.gd" id="9"]
+[ext_resource type="Script" path="res://InfiniteCanvas/Tools/ShaderTool.gd" id="9_cf2b0"]
 [ext_resource type="Shader" path="res://InfiniteCanvas/Tools/selection_rectangle.gdshader" id="10"]
 [ext_resource type="Script" path="res://InfiniteCanvas/Tools/RectangleTool.gd" id="11"]
 [ext_resource type="Script" path="res://InfiniteCanvas/InfiniteCanvasGrid.gd" id="12"]
@@ -55,6 +56,10 @@ script = ExtResource("7")
 selection_rectangle_path = NodePath("../SubViewport/SelectionRectangle")
 cursor_path = NodePath("../SubViewport/SelectionCursor")
 
+[node name="ShaderTool" type="Node" parent="."]
+script = ExtResource("9_cf2b0")
+cursor_path = NodePath("../SubViewport/SelectionCursor")
+
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
@@ -67,6 +72,8 @@ script = ExtResource("2")
 [node name="Grid" type="Node2D" parent="SubViewport"]
 script = ExtResource("12")
 camera_path = NodePath("../Camera2D")
+
+[node name="Shaders" type="Node2D" parent="SubViewport"]
 
 [node name="Strokes" type="Node2D" parent="SubViewport"]
 

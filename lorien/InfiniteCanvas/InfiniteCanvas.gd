@@ -12,6 +12,7 @@ const PLAYER = preload("res://Misc/Player/Player.tscn")
 @onready var _circle_tool: CircleTool = $CircleTool
 @onready var _eraser_tool: EraserTool = $EraserTool
 @onready var _selection_tool: SelectionTool = $SelectionTool
+@onready var _shader_tool: ShaderTool = $ShaderTool
 @onready var _active_tool: CanvasTool = _brush_tool
 @onready var _active_tool_type: int = Types.Tool.BRUSH
 @onready var _strokes_parent: Node2D = $SubViewport/Strokes
@@ -132,6 +133,9 @@ func use_tool(tool_type: int) -> void:
 			_use_optimizer = false
 		Types.Tool.SELECT:
 			_active_tool = _selection_tool
+			_use_optimizer = false
+		Types.Tool.SHADER:
+			_active_tool = _shader_tool
 			_use_optimizer = false
 
 	if prev_tool != _active_tool:
