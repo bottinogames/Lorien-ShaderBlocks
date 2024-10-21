@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://6sgig8jsvn1"]
+
+[ext_resource type="Script" path="res://ShaderBlocks/ShaderBlock.gd" id="1_44iu4"]
+[ext_resource type="Shader" path="res://ShaderBlocks/ShaderEditorBackground.gdshader" id="2_5m618"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nlfj"]
+bg_color = Color(0.103744, 0.103744, 0.103743, 1)
+border_color = Color(0.654902, 0.788235, 0.94902, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Gradient" id="Gradient_e7lh0"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.089172, 0.235669, 0.605096, 0.703822)
+colors = PackedColorArray(0.207843, 0.211765, 0.227451, 1, 0.309804, 0.313726, 0.333333, 1, 0.207843, 0.211765, 0.227451, 1, 0.486275, 0.486275, 0.490196, 1, 0.308374, 0.313604, 0.334503, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hqpqw"]
+gradient = SubResource("Gradient_e7lh0")
+repeat = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vty7"]
+shader = ExtResource("2_5m618")
+shader_parameter/glow = 0.0
+shader_parameter/transparency = 0.0
+shader_parameter/gradient = SubResource("GradientTexture2D_hqpqw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c70gc"]
+bg_color = Color(0.103744, 0.103744, 0.103743, 1)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.654902, 0.788235, 0.94902, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5exb"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ShaderBlockInstance" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 420.0
+offset_bottom = 420.0
+mouse_filter = 1
+script = ExtResource("1_44iu4")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 420.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nlfj")
+
+[node name="HighlightPanel" type="Panel" parent="BackgroundPanel"]
+material = SubResource("ShaderMaterial_1vty7")
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 420.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c70gc")
+
+[node name="ShaderPanel" type="Panel" parent="BackgroundPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5exb")
+
+[node name="DebugPanel" type="Panel" parent="BackgroundPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5exb")

@@ -217,6 +217,96 @@ value = 5.0
 layout_mode = 2
 text = "12"
 
+[node name="ColorButton1" type="Button" parent="Console/Left"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("4")
+theme_override_styles/disabled = SubResource("4")
+theme_override_styles/hover = SubResource("4")
+theme_override_styles/pressed = SubResource("4")
+theme_override_styles/normal = SubResource("4")
+action_mode = 0
+text = "1"
+
+[node name="ColorButton2" type="Button" parent="Console/Left"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("4")
+theme_override_styles/disabled = SubResource("4")
+theme_override_styles/hover = SubResource("4")
+theme_override_styles/pressed = SubResource("4")
+theme_override_styles/normal = SubResource("4")
+action_mode = 0
+text = "2"
+
+[node name="ColorButton3" type="Button" parent="Console/Left"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("4")
+theme_override_styles/disabled = SubResource("4")
+theme_override_styles/hover = SubResource("4")
+theme_override_styles/pressed = SubResource("4")
+theme_override_styles/normal = SubResource("4")
+action_mode = 0
+text = "3"
+
+[node name="ColorButton4" type="Button" parent="Console/Left"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("4")
+theme_override_styles/disabled = SubResource("4")
+theme_override_styles/hover = SubResource("4")
+theme_override_styles/pressed = SubResource("4")
+theme_override_styles/normal = SubResource("4")
+action_mode = 0
+text = "4"
+
+[node name="ColorButton5" type="Button" parent="Console/Left"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("4")
+theme_override_styles/disabled = SubResource("4")
+theme_override_styles/hover = SubResource("4")
+theme_override_styles/pressed = SubResource("4")
+theme_override_styles/normal = SubResource("4")
+action_mode = 0
+text = "5"
+
 [node name="Right" type="HBoxContainer" parent="Console"]
 layout_mode = 2
 size_flags_horizontal = 3

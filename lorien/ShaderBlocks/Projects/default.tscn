@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkatw277ffoy5"]
+
+[ext_resource type="PackedScene" uid="uid://6sgig8jsvn1" path="res://ShaderBlocks/ShaderBlockInstance.tscn" id="1_oqk7l"]
+
+[node name="Default" type="Node2D"]
+
+[node name="ShaderBlockInstance" parent="." instance=ExtResource("1_oqk7l")]
