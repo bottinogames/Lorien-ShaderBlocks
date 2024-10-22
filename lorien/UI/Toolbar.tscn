@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0ral10lvpo7f"]
+[gd_scene load_steps=34 format=3 uid="uid://c0ral10lvpo7f"]
 
 [ext_resource type="Texture2D" uid="uid://c4kv3i7fmom58" path="res://Assets/Icons/save_file.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://dxi6gc6npiskq" path="res://Assets/Icons/open_file.png" id="2"]
@@ -30,6 +30,81 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl08h"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ou2vy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxw6p"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7hs8"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gebwy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="InputEventKey" id="InputEventKey_rqye1"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_ln8i2"]
+events = [SubResource("InputEventKey_rqye1")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6mj4w"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_upet6"]
+events = [SubResource("InputEventKey_6mj4w")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_hpv28"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_ttkhy"]
+events = [SubResource("InputEventKey_hpv28")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_kc6a3"]
+device = -1
+keycode = 52
+unicode = 52
+
+[sub_resource type="Shortcut" id="Shortcut_6npc6"]
+events = [SubResource("InputEventKey_kc6a3")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_2wvo0"]
+device = -1
+keycode = 53
+unicode = 53
+
+[sub_resource type="Shortcut" id="Shortcut_2vm12"]
+events = [SubResource("InputEventKey_2wvo0")]
 
 [node name="Toolbar" type="ScrollContainer"]
 custom_minimum_size = Vector2(0, 40)
@@ -217,94 +292,104 @@ value = 5.0
 layout_mode = 2
 text = "12"
 
-[node name="ColorButton1" type="Button" parent="Console/Left"]
+[node name="QuickColor1" type="Button" parent="Console/Left"]
+self_modulate = Color(1, 0.31, 0.31, 1)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_vertical = 4
-tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("4")
-theme_override_styles/disabled = SubResource("4")
-theme_override_styles/hover = SubResource("4")
-theme_override_styles/pressed = SubResource("4")
-theme_override_styles/normal = SubResource("4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hl08h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ou2vy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxw6p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d7hs8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gebwy")
 action_mode = 0
+shortcut = SubResource("Shortcut_ln8i2")
+shortcut_feedback = false
+shortcut_in_tooltip = false
 text = "1"
 
-[node name="ColorButton2" type="Button" parent="Console/Left"]
+[node name="QuickColor2" type="Button" parent="Console/Left"]
+self_modulate = Color(0.31, 1, 0.31, 1)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_vertical = 4
-tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("4")
-theme_override_styles/disabled = SubResource("4")
-theme_override_styles/hover = SubResource("4")
-theme_override_styles/pressed = SubResource("4")
-theme_override_styles/normal = SubResource("4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hl08h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ou2vy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxw6p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d7hs8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gebwy")
 action_mode = 0
+shortcut = SubResource("Shortcut_upet6")
+shortcut_in_tooltip = false
 text = "2"
 
-[node name="ColorButton3" type="Button" parent="Console/Left"]
+[node name="QuickColor3" type="Button" parent="Console/Left"]
+self_modulate = Color(0.31, 0.31, 1, 1)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_vertical = 4
-tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("4")
-theme_override_styles/disabled = SubResource("4")
-theme_override_styles/hover = SubResource("4")
-theme_override_styles/pressed = SubResource("4")
-theme_override_styles/normal = SubResource("4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hl08h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ou2vy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxw6p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d7hs8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gebwy")
 action_mode = 0
+shortcut = SubResource("Shortcut_ttkhy")
+shortcut_in_tooltip = false
 text = "3"
 
-[node name="ColorButton4" type="Button" parent="Console/Left"]
+[node name="QuickColor4" type="Button" parent="Console/Left"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_vertical = 4
-tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("4")
-theme_override_styles/disabled = SubResource("4")
-theme_override_styles/hover = SubResource("4")
-theme_override_styles/pressed = SubResource("4")
-theme_override_styles/normal = SubResource("4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hl08h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ou2vy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxw6p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d7hs8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gebwy")
 action_mode = 0
+shortcut = SubResource("Shortcut_6npc6")
+shortcut_in_tooltip = false
 text = "4"
 
-[node name="ColorButton5" type="Button" parent="Console/Left"]
+[node name="QuickColor5" type="Button" parent="Console/Left"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_vertical = 4
-tooltip_text = "TOOLBAR_TOOLTIP_BRUSH_COLOR"
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("4")
-theme_override_styles/disabled = SubResource("4")
-theme_override_styles/hover = SubResource("4")
-theme_override_styles/pressed = SubResource("4")
-theme_override_styles/normal = SubResource("4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hl08h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ou2vy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxw6p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d7hs8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gebwy")
 action_mode = 0
+shortcut = SubResource("Shortcut_2vm12")
+shortcut_in_tooltip = false
 text = "5"
 
 [node name="Right" type="HBoxContainer" parent="Console"]

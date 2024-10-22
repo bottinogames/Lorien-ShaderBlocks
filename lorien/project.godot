@@ -279,3 +279,22 @@ common/enable_pause_aware_picking=true
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+
+[shader_globals]
+
+bricks={
+"type": "sampler2D",
+"value": "res://ShaderBlocks/Textures/bricks1.png"
+}
+rug={
+"type": "sampler2D",
+"value": "res://ShaderBlocks/Textures/rug4.png"
+}
+tile={
+"type": "sampler2D",
+"value": "res://ShaderBlocks/Textures/tiles2.png"
+}
+goose={
+"type": "sampler2D",
+"value": "res://ShaderBlocks/Textures/goose.png"
+}

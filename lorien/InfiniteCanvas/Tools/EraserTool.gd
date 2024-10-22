@@ -32,6 +32,8 @@ func _process(delta: float) -> void:
 # ------------------------------------------------------------------------------------------------
 func _stroke_intersects_circle(stroke: BrushStroke, circle_position: Vector2) -> bool:
 	# Check if the cursor is inside bounding box; if it's not, there is no way we are intersecting the stroke
+	if not _bounding_box_cache.has(stroke): return false
+	
 	var bounding_box: Rect2 = _bounding_box_cache[stroke]
 	if !bounding_box.has_point(_last_mouse_position):
 		return false

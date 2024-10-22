@@ -33,7 +33,7 @@ func _ready() -> void:
 	# Init stuff
 	randomize()
 	Engine.max_fps = Settings.get_value(Settings.RENDERING_FOREGROUND_FPS, Config.DEFAULT_FOREGROUND_FPS)
-	get_window().title = "Lorien v%s" % Config.VERSION_STRING
+	get_window().title = "Lorien Shader Blocks (%s) " % Config.VERSION_STRING
 	get_tree().auto_accept_quit = false
 
 	var docs_folder := OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
@@ -66,6 +66,8 @@ func _ready() -> void:
 	_toolbar.save_project.connect(_on_save_project)
 	_toolbar.brush_size_changed.connect(_on_brush_size_changed)
 	_toolbar.tool_changed.connect(_on_tool_changed)
+	
+	_toolbar.quick_color_pressed.connect(_on_BrushColorPicker_color_changed)
 	
 	_menubar.create_new_project.connect(_on_create_new_project)
 	_menubar.project_selected.connect(_on_project_selected)
@@ -300,6 +302,7 @@ func _save_project(project: Project) -> void:
 	project.meta_data = meta_data
 	ProjectManager.save_project(project)
 	_menubar.update_tab_title(project)
+	ShaderBlockManager.instance.active_project_changed(null, project)
 
 # -------------------------------------------------------------------------------------------------
 func _on_create_new_project() -> void:
@@ -338,6 +341,7 @@ func _close_project(project_id: int) -> void:
 			var new_project_id: int = _menubar.get_first_project_id()
 			var new_project: Project = ProjectManager.get_project_by_id(new_project_id)
 			_make_project_active(new_project)
+	ShaderBlockManager.instance.active_project_changed(null, active_project)
 
 # -------------------------------------------------------------------------------------------------
 func _toggle_fullscreen() -> void:
@@ -385,6 +389,7 @@ func _on_open_project(filepath: String) -> bool:
 	if project != null:
 		if project != active_project:
 			_make_project_active(project)
+		ShaderBlockManager.instance.active_project_changed(null, project)
 		return true
 	
 	# Remove/Replace active project if not changed and unsaved (default project)
@@ -395,6 +400,7 @@ func _on_open_project(filepath: String) -> bool:
 	# Create and open it
 	project = ProjectManager.add_project(filepath)
 	_make_project_active(project)
+	ShaderBlockManager.instance.active_project_changed(null, project)
 	
 	return true
 	

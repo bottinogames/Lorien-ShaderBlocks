@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5kn2d11wy4ie"]
+
+[ext_resource type="PackedScene" uid="uid://6sgig8jsvn1" path="res://ShaderBlocks/ShaderBlockInstance.tscn" id="1_snpyo"]
+
+[node name="Default" type="Node2D"]
+
+[node name="ShaderBlockInstance" parent="." instance=ExtResource("1_snpyo")]
+starting_code = "float s = sin(TIME);
+float c = cos(TIME);
+
+vec2 offsetUV = UV - vec2(0.5,0.5);
+float rotation = atan(offsetUV.y, offsetUV.x);
+float magnitude = length(offsetUV);
+vec2 radialUV = vec2(rotation / TAU, magnitude * 2.0);
+
+float wiggle = sin(TIME * 4.0 + radialUV.y * 5.0);
+
+radialUV.x = radialUV.x + wiggle * 0.05;
+
+vec2 unradialUV = vec2(cos(radialUV.x * TAU), sin(radialUV.x * TAU)) * radialUV.y * 0.5;
+unradialUV += vec2(0.5,0.5);
+vec4 goosecolor = texture(goose, fract(unradialUV));
+
+COLOR = goosecolor;"

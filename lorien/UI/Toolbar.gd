@@ -11,6 +11,8 @@ signal toggle_brush_color_picker
 signal brush_size_changed(size: float)
 signal tool_changed(t: Types.Tool)
 
+signal quick_color_pressed(color : Color)
+
 # -------------------------------------------------------------------------------------------------
 const BUTTON_HOVER_COLOR = Color("50ffd6")
 const BUTTON_CLICK_COLOR = Color("50ffd6")
@@ -33,6 +35,12 @@ const BUTTON_NORMAL_COLOR = Color.WHITE
 @onready var _tool_btn_line: FlatTextureButton = $Console/Left/LineToolButton
 @onready var _tool_btn_eraser: FlatTextureButton = $Console/Left/EraserToolButton
 @onready var _tool_btn_selection: FlatTextureButton = $Console/Left/SelectionToolButton
+
+@onready var _quick_color1: Button = $Console/Left/QuickColor1
+@onready var _quick_color2: Button = $Console/Left/QuickColor2
+@onready var _quick_color3: Button = $Console/Left/QuickColor3
+@onready var _quick_color4: Button = $Console/Left/QuickColor4
+@onready var _quick_color5: Button = $Console/Left/QuickColor5
 
 var _last_active_tool_button: FlatTextureButton
 
@@ -65,6 +73,12 @@ func _ready() -> void:
 	_tool_btn_line.pressed.connect(_on_line_tool_pressed)
 	_tool_btn_eraser.pressed.connect(_on_eraser_tool_pressed)
 	_tool_btn_selection.pressed.connect(_on_select_tool_pressed)
+	
+	_quick_color1.pressed.connect(func() -> void: _on_quick_color_pressed(_quick_color1))
+	_quick_color2.pressed.connect(func() -> void: _on_quick_color_pressed(_quick_color2))
+	_quick_color3.pressed.connect(func() -> void: _on_quick_color_pressed(_quick_color3))
+	_quick_color4.pressed.connect(func() -> void: _on_quick_color_pressed(_quick_color4))
+	_quick_color5.pressed.connect(func() -> void: _on_quick_color_pressed(_quick_color5))
 	
 # -------------------------------------------------------------------------------------------------
 func enable_tool(tool_type: Types.Tool) -> void:
@@ -129,8 +143,8 @@ func _on_project_selected_to_open(filepath: String) -> void:
 # -------------------------------------------------------------------------------------------------
 func _on_file_dialog_closed() -> void:
 	var file_dialog: FileDialog = get_node(file_dialog_path)
-	Utils.remove_signal_connections(file_dialog, "file_selected")
-	Utils.remove_signal_connections(file_dialog, "close_requested")
+	Utils.remove_signal_connections(file_dialog.files_selected)
+	Utils.remove_signal_connections(file_dialog.close_requested)
 
 # -------------------------------------------------------------------------------------------------
 func _on_brush_size_changed(value: float) -> void:
@@ -204,3 +218,8 @@ func _update_undo_redo_buttons() -> void:
 	
 	_undo_button.set_is_disabled(!active_project.undo_redo.has_undo())
 	_redo_button.set_is_disabled(!active_project.undo_redo.has_redo())
+
+# -------------------------------------------------------------------------------------------------
+func _on_quick_color_pressed(button : Button) -> void:
+	quick_color_pressed.emit(button.self_modulate)
+	_on_brush_tool_pressed()
