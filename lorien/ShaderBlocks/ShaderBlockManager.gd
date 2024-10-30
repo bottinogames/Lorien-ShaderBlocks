@@ -24,6 +24,7 @@ func active_project_changed (_p:Project, current:Project) -> void:
 	# clear out all children
 	for child in get_children():
 		remove_child(child)
+	active_file = ""
 	
 	if not current: return
 	

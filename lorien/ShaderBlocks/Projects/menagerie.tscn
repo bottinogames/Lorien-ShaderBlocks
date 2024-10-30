@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3ua00vr8wjhs"]
+
+[ext_resource type="PackedScene" uid="uid://6sgig8jsvn1" path="res://ShaderBlocks/ShaderBlockInstance.tscn" id="1_ybus4"]
+
+[node name="Default" type="Node2D"]
+
+[node name="ShaderBlockInstance" parent="." instance=ExtResource("1_ybus4")]
+
+[node name="ShaderBlockInstance2" parent="." instance=ExtResource("1_ybus4")]
+offset_left = 800.0
+offset_right = 1220.0
+starting_code = "float b = texture(voronoi, UV).g;
+b = step(b, sin(TIME) * 0.5 + 0.5);
+COLOR = vec4(UV * (b * 0.5 + 0.5), b, 1.0);"
+
+[node name="ShaderBlockInstance3" parent="." instance=ExtResource("1_ybus4")]
+offset_top = 800.0
+offset_bottom = 1220.0
+starting_code = "float b = texture(voronoi, UV).g;
+b = step(b, sin(TIME) * 0.5 + 0.5);
+COLOR = vec4(UV, 1.0, b);"
+
+[node name="ShaderBlockInstance4" parent="." instance=ExtResource("1_ybus4")]
+offset_left = 800.0
+offset_top = 800.0
+offset_right = 1220.0
+offset_bottom = 1220.0
+starting_code = "float b = texture(voronoi, UV).g;
+b = step(b, sin(TIME) * 0.5 + 0.5);
+COLOR = vec4(UV, 1.0, b);"

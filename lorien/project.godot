@@ -298,3 +298,23 @@ goose={
 "type": "sampler2D",
 "value": "res://ShaderBlocks/Textures/goose.png"
 }
+perlin={
+"type": "sampler2D",
+"value": "res://ShaderBlocks/Textures/colored_alpha_perlin_512.png"
+}
+voronoi={
+"type": "sampler2D",
+"value": "res://ShaderBlocks/Textures/voronoi_quadpack_1024.png"
+}
+cobweb={
+"type": "sampler2D",
+"value": "res://ShaderBlocks/Textures/Cobwebs_1.jpg"
+}
+electric={
+"type": "sampler2D",
+"value": "res://ShaderBlocks/Textures/Electricity_1.jpg"
+}
+gradient={
+"type": "sampler2D",
+"value": "res://ShaderBlocks/Textures/gradient.tres"
+}

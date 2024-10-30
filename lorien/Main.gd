@@ -410,7 +410,7 @@ func _on_save_project_as() -> void:
 	_canvas.disable()
 	_file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	_file_dialog.invalidate()
-	_file_dialog.current_file = active_project.filepath.get_file()
+	_file_dialog.current_file = active_project.get_scene_file_path()
 	_file_dialog.file_selected.connect(_on_file_selected_to_save_project)
 	_file_dialog.close_requested.connect(_on_file_dialog_closed)
 	_file_dialog.popup_centered()
@@ -422,6 +422,7 @@ func _on_save_project() -> void:
 		_canvas.disable()
 		_file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 		_file_dialog.invalidate()
+		_file_dialog.current_file = active_project.get_scene_file_path()
 		_file_dialog.file_selected.connect(_on_file_selected_to_save_project)
 		_file_dialog.close_requested.connect(_on_file_dialog_closed)
 		_file_dialog.popup_centered()

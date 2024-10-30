@@ -1,10 +1,21 @@
+@tool
 class_name ShaderBlock
 extends Control
 
 const template_shader : Shader = preload("res://ShaderBlocks/ShaderTemplate.gdshader")
 const frag_code_insert_id : String = "//<FRAG_CODE>"
 
-@export_multiline var starting_code : String = "COLOR = vec4(UV, 0.5, 1.0);"
+@export_multiline var starting_code : String = "COLOR = vec4(UV, 0.5, 1.0);":
+	get:
+		return starting_code
+	set(value):
+		starting_code = value
+		if Engine.is_editor_hint():
+			frag_code = starting_code
+
+@export var open_shader : bool:
+	set(value):
+		EditorInterface.edit_resource(shader)
 
 @onready var background : Panel = $BackgroundPanel
 @onready var highlight : Panel = $BackgroundPanel/HighlightPanel
@@ -23,7 +34,7 @@ var frag_code : String:
 		return frag_code
 	set(value):
 		frag_code = value
-		shader.code = template_shader.code.replace(frag_code_insert_id, value)
+		shader.set_code(template_shader.code.replace(frag_code_insert_id, value))
 
 var debug_code : String:
 	get:
@@ -37,7 +48,8 @@ var debug_code : String:
 			debugpanel.visible = true
 
 func _ready() -> void:
-	background.gui_input.connect(background_input)
+	if not Engine.is_editor_hint():
+		background.gui_input.connect(background_input)
 	
 	shader = Shader.new()
 	shadermaterial = ShaderMaterial.new()
@@ -49,7 +61,8 @@ func _ready() -> void:
 	debug_shadermaterial.shader = debug_shader
 	debugpanel.material = debug_shadermaterial
 	
-	set_active(false)
+	if not Engine.is_editor_hint():
+		set_active(false)
 	
 	frag_code = starting_code
 

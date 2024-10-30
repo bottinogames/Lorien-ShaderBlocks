@@ -22,3 +22,16 @@ unradialUV += vec2(0.5,0.5);
 vec4 goosecolor = texture(goose, fract(unradialUV));
 
 COLOR = goosecolor;"
+
+[node name="ShaderBlockInstance2" parent="." instance=ExtResource("1_snpyo")]
+offset_left = 799.0
+offset_right = 1219.0
+starting_code = "vec4 gradient_example = texture(gradient, UV);
+// sample our texture color
+vec4 col = texture(goose, UV);
+
+// get the rough brightness of the color
+float avg = (col.r + col.g + col.b) / 3.0;
+
+// use the avg as a 0 to 1 sample of the gradient
+COLOR = texture(gradient, vec2(avg,0.0));"
