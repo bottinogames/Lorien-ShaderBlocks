@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3ua00vr8wjhs"]
+[gd_scene load_steps=3 format=3 uid="uid://d3ua00vr8wjhs"]
 
 [ext_resource type="PackedScene" uid="uid://6sgig8jsvn1" path="res://ShaderBlocks/ShaderBlockInstance.tscn" id="1_ybus4"]
+[ext_resource type="Shader" path="res://ShaderBlocks/GraphTemplate.gdshader" id="2_w1dm1"]
 
 [node name="Default" type="Node2D"]
 
@@ -16,15 +17,32 @@ COLOR = vec4(UV * (b * 0.5 + 0.5), b, 1.0);"
 [node name="ShaderBlockInstance3" parent="." instance=ExtResource("1_ybus4")]
 offset_top = 800.0
 offset_bottom = 1220.0
-starting_code = "float b = texture(voronoi, UV).g;
-b = step(b, sin(TIME) * 0.5 + 0.5);
-COLOR = vec4(UV, 1.0, b);"
+starting_code = "vec4 vsample = texture(voronoi, UV);
+float alpha = step(vsample.g, 0.3);
+
+vec2 topUV = UV * 10.0;
+float top = mod(floor(topUV.x) + floor(topUV.y), 2.0);
+
+float normalizer = SCREEN_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.y;
+vec2 normalizedScreenUV = vec2(SCREEN_UV.x, SCREEN_UV.y * normalizer);
+vec2 bottomUV = normalizedScreenUV * 10.0 + UV * 10.0; 
+float bottom = mod(floor(bottomUV.x) + floor(bottomUV.y), 2.0);
+
+float edge =  vsample.g;
+edge = edge * 2.0;
+edge = edge - 0.3;
+
+float grid = mix(top * edge + 0.1, bottom * 0.5, alpha);
+
+COLOR = vec4(grid,grid,grid, 1.0);"
 
 [node name="ShaderBlockInstance4" parent="." instance=ExtResource("1_ybus4")]
 offset_left = 800.0
 offset_top = 800.0
-offset_right = 1220.0
+offset_right = 2060.0
 offset_bottom = 1220.0
-starting_code = "float b = texture(voronoi, UV).g;
-b = step(b, sin(TIME) * 0.5 + 0.5);
-COLOR = vec4(UV, 1.0, b);"
+override_shader = ExtResource("2_w1dm1")
+starting_code = "f1 = sin(x);
+f2 = cos(x);
+f3 = fract(x);
+f4 = sin(x * 2.0) + cos(x * 3.0);"

@@ -5,6 +5,11 @@ extends Control
 const template_shader : Shader = preload("res://ShaderBlocks/ShaderTemplate.gdshader")
 const frag_code_insert_id : String = "//<FRAG_CODE>"
 
+@export var override_shader : Shader
+
+@export var override_debug_types : Array
+@export var override_debug_names : Dictionary
+
 @export_multiline var starting_code : String = "COLOR = vec4(UV, 0.5, 1.0);":
 	get:
 		return starting_code
@@ -29,12 +34,19 @@ var shadermaterial : ShaderMaterial
 var debug_shader : Shader
 var debug_shadermaterial : ShaderMaterial
 
+var template_code : String:
+	get:
+		if override_shader :
+			return override_shader.code
+		else :
+			return template_shader.code
+
 var frag_code : String:
 	get:
 		return frag_code
 	set(value):
 		frag_code = value
-		shader.set_code(template_shader.code.replace(frag_code_insert_id, value))
+		shader.set_code(template_code.replace(frag_code_insert_id, value))
 
 var debug_code : String:
 	get:
@@ -44,7 +56,7 @@ var debug_code : String:
 			debugpanel.visible = false
 		else:
 			debug_code = value
-			debug_shader.code = template_shader.code.replace(frag_code_insert_id, value)
+			debug_shader.code = template_code.replace(frag_code_insert_id, value)
 			debugpanel.visible = true
 
 func _ready() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://2uaupgd20h03"]
+[gd_scene load_steps=31 format=3 uid="uid://2uaupgd20h03"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c4u5gk5n2aiom" path="res://InfiniteCanvas/InfiniteCanvas.tscn" id="2"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://e4oiel4oqq0b" path="res://UI/Menubar.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://c41oe1lt7u6r8" path="res://UI/MainMenu.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c0ral10lvpo7f" path="res://UI/Toolbar.tscn" id="6"]
-[ext_resource type="Material" uid="uid://s47h7i4rlapl" path="res://ShaderBlocks/ShaderEditorBackground.material" id="6_4txwl"]
 [ext_resource type="PackedScene" uid="uid://ct2b6hxxjlc6h" path="res://UI/Dialogs/UnsavedChangesDialog.tscn" id="7"]
 [ext_resource type="Theme" uid="uid://u5qnpgxqykiv" path="res://UI/Themes/theme_dark.tres" id="8"]
 [ext_resource type="PackedScene" uid="uid://dug4jmvhrb3t1" path="res://UI/Dialogs/AboutDialog.tscn" id="9"]
@@ -33,6 +32,21 @@ shader = ExtResource("15_gljhs")
 shader_parameter/glow = 1.0
 shader_parameter/transparency = 0.0
 shader_parameter/gradient = SubResource("GradientTexture2D_hqpqw")
+
+[sub_resource type="Gradient" id="Gradient_28l2n"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.089172, 0.235669, 0.605096, 0.703822)
+colors = PackedColorArray(0.207843, 0.211765, 0.227451, 1, 0.309804, 0.313726, 0.333333, 1, 0.207843, 0.211765, 0.227451, 1, 0.486275, 0.486275, 0.490196, 1, 0.308374, 0.313604, 0.334503, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c6ybc"]
+gradient = SubResource("Gradient_28l2n")
+repeat = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1g2ee"]
+shader = ExtResource("15_gljhs")
+shader_parameter/glow = 0.0
+shader_parameter/transparency = 0.218391
+shader_parameter/gradient = SubResource("GradientTexture2D_c6ybc")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqegm"]
 bg_color = Color(1, 1, 1, 1)
@@ -379,7 +393,7 @@ layout_mode = 2
 file_dialog_path = NodePath("../../FileDialog")
 
 [node name="ShaderEditor" type="Panel" parent="."]
-material = ExtResource("6_4txwl")
+material = SubResource("ShaderMaterial_1g2ee")
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -403,7 +417,7 @@ anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = 50.0
 offset_right = -10.0
-offset_bottom = -10.0
+offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
@@ -446,6 +460,51 @@ offset_bottom = 40.0
 grow_horizontal = 0
 button_mask = 3
 text = "Close"
+
+[node name="HSlider1" type="HSlider" parent="ShaderEditor"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -70.0
+offset_right = -10.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.0
+
+[node name="HSlider2" type="HSlider" parent="ShaderEditor"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -50.0
+offset_right = -10.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.0
+
+[node name="HSlider3" type="HSlider" parent="ShaderEditor"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -30.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.0
 
 [node name="Statusbar" parent="." instance=ExtResource("3")]
 layout_mode = 1

@@ -12,8 +12,11 @@ global uniform sampler2D rug : source_color, repeat_enable;
 global uniform sampler2D tile : source_color, repeat_enable;
 global uniform sampler2D goose : source_color, repeat_enable;
 
+global uniform float slider1;
+global uniform float slider2;
+global uniform float slider3;
+
 void vertex() {
-	// Called for every vertex the material is visible on.
 	// UV = vec2(UV.x, 1.0-UV.y);
 }
 void fragment() {

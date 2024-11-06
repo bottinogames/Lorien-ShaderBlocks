@@ -8,6 +8,10 @@ static var instance : ShaderEditor
 @onready var update_button : Button = $UpdateButton
 @onready var close_button : Button = $CloseButton
 
+@onready var slider1 : Slider = $HSlider1
+@onready var slider2 : Slider = $HSlider2
+@onready var slider3 : Slider = $HSlider3
+
 var active_shader_block : ShaderBlock = null
 
 var code_edit_breakpoint_clearing : bool = false
@@ -19,6 +23,10 @@ func _ready() -> void:
 	update_button.pressed.connect(update_button_pressed)
 	close_button.pressed.connect(close_button_pressed)
 	ProjectManager.active_project_changed.connect(active_project_changed)
+	
+	slider1.value_changed.connect(slider1_change)
+	slider2.value_changed.connect(slider2_change)
+	slider3.value_changed.connect(slider3_change)
 	
 	visible = false
 
@@ -52,6 +60,17 @@ func update_button_pressed() -> void:
 	
 func close_button_pressed() -> void:
 	set_active_shader_block(null)
+	
+	
+# ------------------------------------------------------------------------------
+func slider1_change(value : float) -> void:
+	RenderingServer.global_shader_parameter_set("slider1", value)
+
+func slider2_change(value : float) -> void:
+	RenderingServer.global_shader_parameter_set("slider2", value)
+
+func slider3_change(value : float) -> void:
+	RenderingServer.global_shader_parameter_set("slider3", value)
 
 # ------------------------------------------------------------------------------
 func active_project_changed(__p: Project, __c: Project) -> void:
@@ -108,19 +127,21 @@ func get_debug_code(code:String, line:int) -> String:
 	else:
 		outname = typeout[1]
 	
-	if vectortype == -1:
+	if vectortype <= 0:
 		return code
 	
 	var truncated_code := "\n".join(lines.slice(0, line+1))
 	
-	if vectortype == 1:
-		truncated_code += "\nCOLOR = vec4(%s, %s, %s, 1.0);" % [outname,outname,outname]
+	if active_shader_block.override_debug_types and active_shader_block.override_debug_types.size() > vectortype:
+		truncated_code += active_shader_block.override_debug_types[vectortype].format({"value": outname})
+	elif vectortype == 1:
+		truncated_code += "\nCOLOR = vec4({value}, {value}, {value}, 1.0);".format({"value": outname})
 	elif vectortype == 2:
-		truncated_code += "\nCOLOR = vec4(%s, 0.0, 1.0);" % outname
+		truncated_code += "\nCOLOR = vec4({value}, 0.0, 1.0);".format({"value": outname})
 	elif vectortype == 3:
-		truncated_code += "\nCOLOR = vec4(%s, 1.0);" % outname
+		truncated_code += "\nCOLOR = vec4({value}, 1.0);".format({"value": outname})
 	elif vectortype == 4:
-		truncated_code += "\nCOLOR = %s;" % outname
+		truncated_code += "\nCOLOR = {value};".format({"value": outname})
 	
 	return truncated_code
 
@@ -128,7 +149,10 @@ func get_vector_type(inname:String) -> Array:
 	var vectortype := 0
 	var outname := inname
 	
-	if inname.begins_with("float "):
+	var override_names = active_shader_block.override_debug_names;
+	if override_names and override_names.has(inname):
+		vectortype = override_names[inname]
+	elif inname.begins_with("float "):
 		outname = outname.substr(6)
 		vectortype = 1
 	elif inname.begins_with("vec2 "):

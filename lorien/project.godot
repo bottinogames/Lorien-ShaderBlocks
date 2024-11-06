@@ -318,3 +318,15 @@ gradient={
 "type": "sampler2D",
 "value": "res://ShaderBlocks/Textures/gradient.tres"
 }
+slider1={
+"type": "float",
+"value": 0.0
+}
+slider2={
+"type": "float",
+"value": 0.0
+}
+slider3={
+"type": "float",
+"value": 0.0
+}
